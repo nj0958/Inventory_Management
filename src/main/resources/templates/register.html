@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate ="~{layout/layout}">
+<head>
+    <title>회원 등록</title>
+</head>
+
+<div layout:fragment="content">
+	<h4 class="mt-4 border-bottom">관리자 등록</h4>
+     <form th:action="@{/user/register}" th:object="${userForm}" method="post">
+     	<div class="form-group row">
+		    <label for="email" class="col-sm-1 col-form-label">ID</label>
+		    <div class="col-sm-11">
+		      <input type="text" th:field="*{userName}" class="form-control w-50">
+		      <div class ="validation_error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</div>
+		    </div>
+		</div>
+     	<div class="form-group row">
+		    <label for="password" class="col-sm-1 col-form-label">비밀번호</label>
+		    <div class="col-sm-11">
+		      <input type="password" th:field="*{password}" class="form-control w-50">
+		      <div class ="validation_error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
+		    </div>
+		</div>
+    	<div class="form-group row">
+		    <label for="address" class="col-sm-1 col-form-label">주소</label>
+		    <div class="col-sm-11">
+		      <input type="text" th:field="*{address}" class="form-control w-50">
+		      
+		    </div>
+		</div>
+		<div class="form-group row">
+		    <label for="phone_number" class="col-sm-1 col-form-label">전화번호</label>
+		    <div class="col-sm-11">
+		      <input type="text" th:field="*{phone_number}" class="form-control w-50">
+		        </div>
+		</div>	
+   		<div class="form-group row">
+		    <div class="col-sm-11 offset-sm-1">
+		      <button type="submit" class="btn btn-outline-primary btn-sm">등록</button>
+		   	</div>
+		</div>
+     </form>
+</div>

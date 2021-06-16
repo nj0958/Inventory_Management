@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate ="~{layout/layout}">
+<head>
+    <title>로그인</title>
+</head>
+
+<div layout:fragment="content">
+	<h4 class="mt-4 border-bottom">로그인</h4>
+     <form th:action="@{/user/login}" method="POST">
+     	<div class="form-group row">
+		    <label for="email" class="col-sm-1 col-form-label">ID</label>
+		    <div class="col-sm-11">
+		      <input type="text" class="form-control w-50" id="email" name="username">
+		    </div>
+		</div>
+     	<div class="form-group row">
+		    <label for="password" class="col-sm-1 col-form-label">비밀번호</label>
+		    <div class="col-sm-11">
+		      <input type="password" class="form-control w-50" id="password" name="password">
+		    </div>
+		</div>
+    		
+   		<div class="form-group row">
+		    <div class="col-sm-11 offset-sm-1">
+		      <button type="submit" class="btn btn-outline-primary btn-sm">로그인</button>
+		   	</div>
+		</div>
+     </form>
+</div>

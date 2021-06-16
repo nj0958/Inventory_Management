@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>상품 등록</title>
+</head>
+<body>
+<main layout:fragment="content">
+<form method="post" action="product_save">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">품번 </label>
+    <input type="text" class="form-control"   name="ItemNumber">
+  
+
+    <label for="exampleFormControlInput1">상품이름</label>
+    <input type="text" class="form-control"  name = "productname">
+  
+  
+    <label for="exampleFormControlInput1">상품가격</label>
+    <input type="text" class="form-control"  name = "productprice">
+  
+   
+    <label for="exampleFormControlInput1">상품사진</label>
+    <input type="text" class="form-control" name = "producPicture">
+    <div class="form-group">
+    <label for="exampleFormControlFile1"></label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name = "producPicture">
+  </div>
+  </div> 
+  <div>
+  <button type="submit" class="btn btn-outline-primary ">등록하기</button>
+  </div> 
+</form>
+</main>	
+</body>
+</html>

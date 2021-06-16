@@ -1,0 +1,34 @@
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>유저 목록</title>
+</head>
+
+<div layout:fragment="content">
+
+	<table class="table table-bordered table-striped w-75">
+		<thead>
+			<tr>
+			<th class="col-sm-2">NO</th>
+				<th class="col-sm-2">유저 아이디</th>
+				<th class="col-sm-2">주소</th>
+				<th class="col-sm-2">전화번호</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user,stat : ${user}">
+				<td align="right" th:text="${stat.count}"></td>
+				<td th:text="${user.userName}"></td>
+				<td th:text="${user.address}"></td>
+				<td th:text="${user.phone_number}"></td>
+				
+				<td>
+				</td>
+			</tr>
+		
+			</tbody>
+	</table>
+	</div>

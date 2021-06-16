@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>재고 목록</title>
+</head>
+
+<div layout:fragment="content">
+
+	<table class="table table-bordered table-striped w-75">
+		<thead>
+			<tr>
+				<th class="col-sm-1"></th>
+				<th class="col-sm-2">상품 아이디</th>
+				<th class="col-sm-2">상품 명</th>
+				<th class="col-sm-2">상품 가격</th>
+				<th class="col-sm-3">상품 사진</th>
+				<th class="col-sm-1"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product_list,stat : ${product_list}">
+				<td align="right" th:text="${stat.count}"></td>
+				<td th:text="${product_list.ItemNumber}"></td>
+				<td th:text="${product_list.productname}"></td>
+				<td th:text="${product_list.productprice}"></td>
+				<td th:text="${product_list.producPicture}"></td>
+				<td>
+					<button type="button"
+						class="btn btn-outline-danger btn-sm del-button-clicked"
+						data-toggle="modal" th:id="${stat.count}"
+						onclick="del_button_clicked(this.id);" data-target="#deleteModal"
+						th:data-pk="${product_list.id}" th:data-seq="${stat.count}"
+						th:data-url="@{|/product_del/${product_list.id}|}">삭제</button>
+				</td>
+				<td>
+				
+				<a type="button"
+						class="btn btn-outline-primary btn-sm del-button-clicked"
+						th:href="@{|/product_edit/${product_list.id}|}">
+						수정</a> 
+				</td>
+			</tr>
+		
+			</tbody>
+	</table>
+
+	<div class="modal fade" id="deleteModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">상품 삭제</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<span id="product_seq"></span>상품를 삭제하시겠습니까?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-success btn-sm"
+						data-bs-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-outline-danger btn-sm"
+						id="deleteConfirm">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+<th:block layout:fragment="extra_script">
+	<script th:inline="javascript"> 
+		let modal = null; 
+	    let url = null;	
+	
+	function del_button_clicked(clicked_id) { 
+		let delButton = document.getElementById(clicked_id);
+		let pk = delButton.dataset.pk;  
+		let seq = delButton.dataset.seq;
+        document.getElementById('product_seq').textContent = "'" + seq + "' ";
+        url = delButton.dataset.url;
+		        
+		let container = document.getElementById("deleteModal");
+        modal = new bootstrap.Modal(container);
+        modal.show();
+	}
+	
+
+	document.getElementById("deleteConfirm").addEventListener("click", function () {
+                if (modal != null ) {
+                	modal.hide();
+                	location.href = url;
+                }
+	  });
+
+    </script>
+</th:block>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  layout:fragment="nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">쇼핑몰 재고 관리</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-door"></i>Home</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             로그인
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="nav-link" href="/user/login"><i class="bi bi-list-check"></i>로그인</a></li>
+            <li><a class="nav-link" href="/user/register"><i class="bi bi-pencil-square"></i>관리자 등록</a></li>
+             <li><a class="nav-link" href="/user/logout"><i class="bi bi-pencil-square"></i>로그아웃</a></li>
+          </ul>
+        </li>
+        
+     	<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             재고 카테고리
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="nav-link" href="/product_list">상품 목록</a></li>
+            <li><a class="nav-link" href="/product_save">상품 등록</a></li>
+            <li><a class="nav-link" href="/user_list">유저 목록</a></li>
+          </ul>
+          
+        </li>
+     </div>
+  </div>
+</nav>
+
+</html>
